@@ -1,0 +1,58 @@
+[debug] [2025-12-22T15:26:35.868Z] ----------------------------------------------------------------------
+[debug] [2025-12-22T15:26:35.870Z] Command:       D:\Node.js\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js functions:shell
+[debug] [2025-12-22T15:26:35.871Z] CLI Version:   15.1.0
+[debug] [2025-12-22T15:26:35.871Z] Platform:      win32
+[debug] [2025-12-22T15:26:35.871Z] Node Version:  v24.12.0
+[debug] [2025-12-22T15:26:35.871Z] Time:          Mon Dec 22 2025 16:26:35 GMT+0100 (GMT+01:00)
+[debug] [2025-12-22T15:26:35.871Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-12-22T15:26:37.005Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T15:26:37.005Z] > authorizing via signed-in user (mohamedhamzaoui994@gmail.com)
+[debug] [2025-12-22T15:26:37.005Z] [iam] checking project medical-portal-b6056 for permissions ["firebase.projects.get"]
+[debug] [2025-12-22T15:26:37.006Z] Checked if tokens are valid: true, expires at: 1766419898334
+[debug] [2025-12-22T15:26:37.006Z] Checked if tokens are valid: true, expires at: 1766419898334
+[debug] [2025-12-22T15:26:37.006Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/medical-portal-b6056:testIamPermissions [none]
+[debug] [2025-12-22T15:26:37.006Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/medical-portal-b6056:testIamPermissions x-goog-quota-user=projects/medical-portal-b6056
+[debug] [2025-12-22T15:26:37.007Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medical-portal-b6056:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-12-22T15:26:37.276Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/medical-portal-b6056:testIamPermissions 200
+[debug] [2025-12-22T15:26:37.276Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/medical-portal-b6056:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-12-22T15:26:37.276Z] Emulator locator file path: C:\Users\user\AppData\Local\Temp\hub-medical-portal-b6056.json
+[debug] [2025-12-22T15:26:37.279Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-12-22T15:26:37.286Z] defaultcredentials: writing to file C:\Users\user\AppData\Roaming\firebase\mohamedhamzaoui994_gmail_com_application_default_credentials.json
+[debug] [2025-12-22T15:26:37.287Z] DEBUG: Setting GAC to C:\Users\user\AppData\Roaming\firebase\mohamedhamzaoui994_gmail_com_application_default_credentials.json
+[debug] [2025-12-22T15:26:37.288Z] Checked if tokens are valid: true, expires at: 1766419898334
+[debug] [2025-12-22T15:26:37.288Z] Checked if tokens are valid: true, expires at: 1766419898334
+[debug] [2025-12-22T15:26:37.288Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/medical-portal-b6056/adminSdkConfig [none]
+[debug] [2025-12-22T15:26:37.614Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/medical-portal-b6056/adminSdkConfig 200
+[debug] [2025-12-22T15:26:37.614Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/medical-portal-b6056/adminSdkConfig {"projectId":"medical-portal-b6056","storageBucket":"medical-portal-b6056.firebasestorage.app"}
+[debug] [2025-12-22T15:26:37.625Z] [functions] Watching "D:\medical-web-portal\functions" for Cloud Functions...
+[debug] [2025-12-22T15:26:37.627Z] Validating nodejs source
+[debug] [2025-12-22T15:26:38.377Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.2",
+    "nodemailer": "^7.0.12"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.4.1"
+  },
+  "private": true
+}
+[debug] [2025-12-22T15:26:38.377Z] Building nodejs source
+[debug] [2025-12-22T15:26:38.378Z] Failed to find version of module node: reached end of search path D:\medical-web-portal\functions\node_modules
+[warn] !  functions: Your requested "node" version "22" doesn't match your global version "24". Using node@24 from host. 
+[debug] [2025-12-22T15:26:38.379Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-12-22T15:26:38.385Z] Found firebase-functions binary at 'D:\medical-web-portal\functions\node_modules\.bin\firebase-functions'
