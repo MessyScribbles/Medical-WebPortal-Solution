@@ -114,6 +114,4 @@ Patient Onboarding: Once approved, the Doctor logs in and manually registers the
 
 Interaction: The Patient logs in using the credentials provided by the doctor. They can now view their medical file, request appointments, chat, or accept video calls initiated by the doctor.
 
-To view a demonstartio visit the video : https://youtu.be/2QCJRZo30FI
-
 I hope this project helps anyone looking to understand how to build complex React applications with Firebase integration. 34add2264ec83422ce090d621aa83abbbd5e54f5
