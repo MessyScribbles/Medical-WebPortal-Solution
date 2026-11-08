@@ -1,117 +1,123 @@
+# MediPortal
 
-# Getting Started with Create React App
+A telemedicine web platform that connects doctors and patients, with role-based portals, real-time chat, video consultations, appointment scheduling and digital medical records.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Built with React and Firebase as a COOP project, to practice real-time data, role-based authentication and WebRTC calling.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)
+![WebRTC](https://img.shields.io/badge/WebRTC-333333?logo=webrtc&logoColor=white)
 
-In the project directory, you can run:
+## Screenshots
 
-### `npm start`
+<!-- Replace with real images, for example: -->
+<!-- ![Doctor dashboard](screenshots/doctor-dashboard.png) -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Role-based access:** separate portals for administrators, doctors and patients
+- **Real-time chat:** instant messaging between a doctor and their patients
+- **Video consultations:** video and voice calls over WebRTC
+- **Appointments:** patients request appointments and doctors manage them
+- **Medical records:** digital case files and patient history
+- **Admin dashboard:** verify doctors and manage users
 
-MediPortal - Telemedicine Platform
-This project was developed as part of my COOP Project class. The goal was to build a comprehensive medical portal that applies advanced web development concepts, including real-time database management, role-based authentication, and integrated video calling features using WebRTC.
+## Tech stack
 
-It is a full-stack solution built with React and Firebase designed to bridge the gap between doctors and patients.
+| Layer | Technology |
+| :--- | :--- |
+| Frontend | React, react-slick (carousel) |
+| Authentication | Firebase Authentication (email and password) |
+| Database | Cloud Firestore |
+| Backend logic | Firebase Cloud Functions |
+| Calls | WebRTC |
 
-Key Features
-Role-Based Access: Distinct portals for Administrators, Doctors, and Patients.
+## How it works
 
-Real-Time Chat: Instant messaging between doctors and patients.
+The workflow imitates a real clinic:
 
-Video Consultations: Integrated video and voice calling functionality.
+1. **Doctor registration.** A doctor signs up through the registration page. The account starts as `pending`.
+2. **Verification.** An administrator reviews the application (license and hospital information) and approves the account.
+3. **Patient onboarding.** Once approved, the doctor logs in and registers their patients. This generates the patients' login credentials.
+4. **Consultation.** Patients log in with those credentials. They can view their medical file, request appointments, chat with their doctor and answer video calls started by the doctor.
 
-Appointment Management: Scheduling system for medical consultations.
+## Getting started
 
-Medical Records: Digital case files and history tracking.
+### Prerequisites
 
-Admin Dashboard: Complete oversight for verifying doctors and managing users.
+- [Node.js](https://nodejs.org) (a current LTS version is recommended)
+- npm
+- A Google account for Firebase
 
-Prerequisites
-Before you begin, ensure you have the following installed:
+### Install
 
-Node.js (v14 or higher)
+```bash
+git clone <repository-url>
+cd <repository-folder>
+npm install
+```
 
-npm
+If the carousel does not load, install it explicitly:
 
-Installation
-Clone the repository to your local machine.
+```bash
+npm install react-slick slick-carousel
+```
 
-Open your terminal in the project folder and install the dependencies: npm install
+### Firebase setup
 
-If you encounter issues with the carousel, ensure you install it explicitly: npm install react-slick slick-carousel
+The app depends on Firebase for authentication and data, so you need your own project.
 
-Firebase Configuration
-Firebase Account: You will need a Google Firebase project.
+1. Create a project in the [Firebase Console](https://console.firebase.google.com).
+2. Enable **Authentication** with the **Email/Password** provider.
+3. Enable **Firestore Database**.
+4. Register a web app in the project settings and copy its configuration keys.
+5. Open `src/firebase.js` and replace the placeholder values with your keys.
 
-Important: This project uses Cloud Functions, which requires your Firebase project to be on the Blaze (Pay-as-you-go) Plan. You will not be charged if you stay within the free tier limits, but a billing account is required for deployment.
-This project relies entirely on Firebase for authentication and database services. You will need to set up your own Firebase project for it to work.
+> **Billing:** this project uses Cloud Functions, which requires the **Blaze (pay-as-you-go)** plan. You are not charged while you stay inside the free tier, but a billing account must be attached before you can deploy functions.
 
-Go to the Firebase Console and create a new project.
+### Firestore rules (development only)
 
-Enable Authentication (Email/Password provider).
+For local testing, paste these rules into **Firestore Database → Rules**:
 
-Enable Firestore Database.
-
-Copy your web app configuration keys from the project settings.
-
-Open src/firebase.js in your code editor and replace the placeholder keys with your actual Firebase configuration.
-
-Database Rules:
-
-To ensure the application functions correctly during development and testing, go to the Firestore Database tab in your Firebase Console, select the Rules tab, and paste the following rules.
-
-Note: These rules allow open read/write access and are intended for development or testing purposes only
-
+```
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Allow anyone to read and write to the database (FOR DEVELOPMENT ONLY)
     match /{document=**} {
       allow read, write: if true;
     }
-    
   }
 }
+```
 
-How to Run
-To start the development server:
+> **Warning:** these rules let anyone read and write the whole database, including medical data. Use them only on a throwaway project with fake data. Never deploy the app with these rules or with real patient information. Before any real use, replace them with rules that check `request.auth` and the user's role.
+
+### Run
+
+```bash
 npm start
+```
 
+The app opens at `http://localhost:3000`.
 
-Setting Up the Admin
-The application does not have a public registration form for Administrators. To access the Admin Dashboard, you must manually promote a user in the database.
+## Create the first administrator
 
-Run the application using npm start.
+There is no public sign-up for administrators. Promote an account manually:
 
-Go to the Login page.
+1. Start the app and register an account from the login page.
+2. In the Firebase Console, open **Firestore Database → `users` collection**.
+3. Find the document for that account.
+4. Change its `role` field to `admin`.
+5. Log in again. The admin dashboard is now available.
 
-Register a new account or attempt to login (which creates a user record in Authentication).
+## Project status and limitations
 
-Go to your Firebase Console > Firestore Database > users collection.
+- Course project, not intended for production or real medical use
+- Firestore rules are open for development (see the warning above)
+- Firebase keys are stored in `src/firebase.js`. For a public repository, move them to environment variables.
 
-Find the document corresponding to the user you just created.
+## Author
 
-Change the role field from "patient" or "doctor" to admin.
+Mohamed El Hamzaoui
 
-You can now log in as an Admin and manage the platform.
-
-How it Works:
-The workflow of the application is designed to mimic a real-world medical process:
-
-Doctor Registration: A doctor signs up via the registration page. Their account is set to "pending" status.
-
-Verification: The Admin logs in, reviews the doctor's application (license, hospital info), and approves their account and gets the .
-
-Patient Onboarding: Once approved, the Doctor logs in and manually registers their patients. This generates credentials for the patient.
-
-Interaction: The Patient logs in using the credentials provided by the doctor. They can now view their medical file, request appointments, chat, or accept video calls initiated by the doctor.
-
-I hope this project helps anyone looking to understand how to build complex React applications with Firebase integration. 34add2264ec83422ce090d621aa83abbbd5e54f5
+- GitHub: [@MessyScribbles](https://github.com/MessyScribbles)
