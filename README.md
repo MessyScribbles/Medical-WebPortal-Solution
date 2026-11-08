@@ -118,6 +118,6 @@ There is no public sign-up for administrators. Promote an account manually:
 
 ## Author
 
-Mohamed El Hamzaoui
 
 - GitHub: [@MessyScribbles](https://github.com/MessyScribbles)
+- Github : [https://github.com/MoadMouad](url)
