@@ -8,10 +8,6 @@ Built with React and Firebase as a COOP project, to practice real-time data, rol
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)
 ![WebRTC](https://img.shields.io/badge/WebRTC-333333?logo=webrtc&logoColor=white)
 
-## Screenshots
-
-<!-- Replace with real images, for example: -->
-<!-- ![Doctor dashboard](screenshots/doctor-dashboard.png) -->
 
 ## Features
 
